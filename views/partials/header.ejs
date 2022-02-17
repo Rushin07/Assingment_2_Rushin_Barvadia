@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%= title %>
+    </title>
+    <link rel="stylesheet" href="/bootstrap/dist/css/bootstrap.min.css">
+    <link rel='stylesheet' href='/@fortawesome/fontawesome-free/css/all.min.css' />
+</head>
+
+<body>
+    <!-- Main Nav bar  -->
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="#">
+            <img src="/images/Space_Rushin.png" alt="logo"
+                style="width:80px; height:80px ; border: 10px solid black ; margin-left: 15px;">
+        </a>
+
+        <!-- Links -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <% if (title=="Home Page" ) { %>
+                    <a class="nav-link active" href="/">
+                        <% } else { %>
+                            <a class="nav-link" href="/">
+                                <% } %>
+                                    <i class="fas fa-home"></i> Home
+                            </a>
+                    </a>
+            </li>
+            <li class="nav-item">
+                <% if (title=="Projects" ) { %>
+                    <a class="nav-link active" href="/projects">
+                        <% } else { %>
+                            <a class="nav-link" href="/projects">
+                                <% } %>
+                                    <i class="fas fa-project-diagram"></i> Projects
+                            </a>
+                    </a>
+            </li>
+            <li class="nav-item">
+                <% if (title=="About Me" ) { %>
+                    <a class="nav-link active" href="/aboutme">
+                        <% } else { %>
+                            <a class="nav-link" href="/aboutme">
+                                <% } %>
+                                    <i class="fas fa-user"></i> About Me
+
+                            </a>
+                    </a>
+            </li>
+            <li class="nav-item">
+                <% if (title=="Services " ) { %>
+                    <a class="nav-link active" href="/services">
+                        <% } else { %>
+                            <a class="nav-link" href="/services">
+                                <% } %>
+                                    <i class="fas fa-briefcase"></i></i> Services
+                            </a>
+                    </a>
+            </li>
+            <li class="nav-item">
+                <% if (title=="Contact Me" ) { %>
+                    <a class="nav-link active" href="/contactme">
+                        <% } else { %>
+                            <a class="nav-link" href="/contactme">
+                                <% } %>
+                                    <i class="fas fa-address-card"></i> Contact Me
+                            </a>
+                    </a>
+            </li>
+        </ul>
+    </nav>

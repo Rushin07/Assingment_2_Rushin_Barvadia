@@ -1,0 +1,59 @@
+<% include partials/header.ejs %>
+    <div class="container">
+        <h1>
+            <%= title %>
+        </h1>
+        <!-- Projects pages which is divided into  -->
+        <p>Welcome To the <%= title %> page
+        </p>
+        <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
+            <div class="row-exap">
+                <h1>Project 1: License Plate Detector</h1>
+                <thead>
+                </thead>
+                <div class="col-sm">
+                    Project 1
+                    <figure class="figure">
+                        <img src="/images/License.png" class="figure-img img-fluid rounded"
+                            alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption">A Picture of License plate number detected and later
+                            extracted fro cross examination</figcaption>
+                    </figure>
+                    <h4 class="alingcenter">The First project to work on was the license plate dection where i extract
+                        the license plate
+                        number from moving cars and store them if they broke the signal. this was achieved using machine
+                        learing & Image processing which are concepts of Artififical Intelligence. i did the whole
+                        project by myself and the final </h4>
+                </div>
+                <p></p>
+                <h1 style="margin-top: 100px;">Project 2: Clothes & Color Detector</h1>
+                <thead>
+                </thead>
+                <div class="col-sm">
+                    Project 2
+                    <figure class="figure">
+                        <img src="/images/detection.png" class="figure-img img-fluid rounded"
+                            alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class=" figure-caption">Image detection of Color & clothes.</figcaption>
+                    </figure>
+                    <h4>The Second project was on color and clothes setecion using simillar featues from the first
+                        one but this was more complex as i has to create the alogrithm from scratch. The projects finds
+                        the clothes and color of a person from the security camars mainly this project is used for after
+                        action incident, and the result were incredibly good to be used in real life.</h4>
+                </div>
+                <h1 style="margin-top: 100px;"> Project 3: Machines Refillable Systems</h1>
+                <div class="col-sm">
+                    <figure class="figure">
+                        <img src="/images/vendingmachine.png" class="figure-img img-fluid rounded"
+                            alt="A generic square placeholder image with rounded corners in a figure.">
+                        <figcaption class="figure-caption">vending machine jobs</figcaption>
+                    </figure>
+                    <h4>The Third project was the most recent one which was working on Machines Refillable systems, in
+                        this i work
+                        on autorefill function where when the machines function fell below a certian threhold the system
+                        would automaticlly send a message to the manucature/owner to refill the machines.</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% include partials/footer.ejs %>

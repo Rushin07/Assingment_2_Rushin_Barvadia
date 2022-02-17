@@ -1,0 +1,7 @@
+Things to install for Assingment 2
+
+npm install mongoose --save
+npm install passport --save
+npm install passport-local --save
+npm install connect-flash --save
+npm install express-session --save

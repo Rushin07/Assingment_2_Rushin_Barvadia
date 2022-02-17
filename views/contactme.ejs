@@ -1,0 +1,66 @@
+<% include partials/header.ejs %>
+    <!-- <link href="/public/stylesheets/contactme.css" rel="stylesheet"> -->
+    <div class="container">
+        <h1>
+            <%= title %>
+        </h1>
+        <p>Welcome To <%= title %>
+        </p>
+        <!-- form for the users to fill so that they can send their information -->
+        <div class="container contact-form">
+            <form method="post">
+                <h3>Drop Us a Message</h3>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group" style="margin-top:50px;">
+                            <input type="text" name="txtName" class="form-control" placeholder="First Name *"
+                                value="" />
+                        </div>
+                        <div class="form-group" style="margin-top:50px;">
+                            <input type="text" name="txtName" class="form-control" placeholder="Last Name*" value="" />
+                        </div>
+                        <div class="form-group" style="margin-top:50px;">
+                            <input type="text" name="txtEmail" class="form-control" placeholder="Your Email *"
+                                value="" />
+                        </div>
+                        <div class="form-group" style="margin-top:50px;">
+                            <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number *"
+                                value="" />
+                        </div>
+                        <div class="form-group" style="margin-top:50px;">
+                            <a class="btn btn-primary" href="/" role="button">Submit</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6" style="margin-top:50px;">
+                        <div class="form-group">
+                            <textarea name="txtMsg" class="form-control" placeholder="Your Message *"
+                                style="width: 100%; height: 150px;"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- my information card -->
+        <h1 style="margin-top:50px;">My Contact Information</h1>
+        <div class="card-header bg-success text-white text-uppercase" style="margin-top:50px;"><i
+                class="fa fa-phone"></i> Phone</div>
+        <div class="card-body">
+            <p>Mobile: 4372564623</p>
+        </div>
+        <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-envelope"></i> mail</div>
+        <div class="card-body">
+            <p>Mail: barvadiarushin@gmail.com</p>
+        </div>
+
+        <div class="card bg-light mb-3">
+            <div class="card-header bg-success text-white text-uppercase"><i class="fa fa-home"></i> Address</div>
+            <div class="card-body">
+                <p>5 Brockly drive</p>
+                <p>Scarborough</p>
+                <p>Ontario</p>
+                <p>Canada</p>
+            </div>
+
+        </div>
+    </div>
+    <% include partials/footer.ejs %>
