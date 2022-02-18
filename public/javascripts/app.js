@@ -13,6 +13,19 @@ if (getTitle == "Inventory List") {
     }
 }
 
+if (getTitle == "Contact List") {
+    let deleteButtons = document.querySelectorAll('.btn-danger');
+
+    for (button of deleteButtons) {
+        button.addEventListener('click', (event) => {
+            if (!confirm("Are you sure?")) {
+                // Cancels the action
+                event.preventDefault();
+            }
+        });
+    }
+}
+
 
 if (getTitle == "Sign-up Form") {
     const confirm = document.querySelector('input[name=password_confirm]');

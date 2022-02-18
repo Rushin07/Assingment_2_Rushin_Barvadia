@@ -4,10 +4,37 @@
 // Date: 2022-02-17
 let Contact = require('../models/contact');
 
+function getErrorMessage(err) {
+    console.log("===> Erro: " + err);
+    let message = '';
+
+    if (err.code) {
+        switch (err.code) {
+            case 11000:
+            case 11001:
+                message = 'Username already exists';
+                break;
+            default:
+                message = 'Something went wrong';
+        }
+    } else {
+        for (var errName in err.errors) {
+            if (err.errors[errName].message) message = err.errors[errName].message;
+        }
+    }
+
+    return message;
+};
+
+
+
 exports.list = function (req, res, next) {
 
     Contact.find((err, contactList) => {
         if (err) {
+            let message = getErrorMessage(err);
+
+            req.flash('error', message);
             return console.error(err);
         }
         else {
@@ -16,7 +43,8 @@ exports.list = function (req, res, next) {
                 {
                     title: 'Contact List',
                     ContactList: contactList,
-                    // userName: req.user ? req.user.username : ''
+                    messages: req.flash('error'),
+                    userName: req.user ? req.user.username : ''
                 }
             );
         }
@@ -25,32 +53,36 @@ exports.list = function (req, res, next) {
 
 module.exports.displayAddPage = (req, res, next) => {
 
-    let newItem = Contact();
+    let newContacts = Contact();
 
     res.render('contact/add_edit', {
-        title: 'Add a new Item',
-        item: newItem,
-        // userName: req.user ? req.user.username : ''
+        title: 'Add a new Contacts',
+        messages: req.flash('error'),
+        contacts: newContacts,
+        userName: req.user ? req.user.username : ''
     })
 }
 
 module.exports.processAddPage = (req, res, next) => {
 
-    let newItem = Contact({
+    let newContacts = Contact({
         _id: req.body.id,
-        Name: req.body.name,
-        "Phone Number": req.body.phonenumber,
-        Email: req.body.email,
+        fname: req.body.fname,
+        pnumber: req.body.pnumber,
+        email: req.body.email,
     });
 
-    Contact.create(newItem, (err, item) => {
+    Contact.create(newContacts, (err, contacts) => {
         if (err) {
+            let message = getErrorMessage(err);
+
+            req.flash('error', message);
             console.log(err);
             res.end(err);
         }
         else {
             // refresh the book list
-            console.log(item);
+            console.log(contacts);
             res.redirect('/contact/list');
         }
     });
@@ -60,17 +92,21 @@ module.exports.processAddPage = (req, res, next) => {
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
 
-    Contact.findById(id, (err, itemToEdit) => {
+    Contact.findById(id, (err, contactsToEdit) => {
         if (err) {
+            let message = getErrorMessage(err);
+
+            req.flash('error', message);
             console.log(err);
             res.end(err);
         }
         else {
             //show the edit view
             res.render('contact/add_edit', {
-                title: 'Edit Item',
-                item: itemToEdit,
-                // userName: req.user ? req.user.username : ''
+                title: 'Edit Contacts',
+                messages: req.flash('error'),
+                contacts: contactsToEdit,
+                userName: req.user ? req.user.username : ''
             })
         }
     });
@@ -80,22 +116,25 @@ module.exports.displayEditPage = (req, res, next) => {
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id
 
-    let updatedItem = Contact({
-        __id: req.body.id,
-        Name: req.body.name,
-        "Phone Number": req.body.phonenumber,
-        Email: req.body.email,
+    let updatedContacts = Contact({
+        _id: req.body.id,
+        fname: req.body.fname,
+        pnumber: req.body.pnumber,
+        email: req.body.email,
     });
 
-    // console.log(updatedItem);
+    console.log(updatedContacts);
 
-    Contact.updateOne({ _id: id }, updatedItem, (err) => {
+    Contact.updateOne({ _id: id }, updatedContacts, (err) => {
         if (err) {
+            let message = getErrorMessage(err);
+
+            req.flash('error', message);
             console.log(err);
             res.end(err);
         }
         else {
-            // console.log(req.body);
+            console.log(req.body);
             // refresh the book list
             res.redirect('/contact/list');
         }

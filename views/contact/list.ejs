@@ -19,9 +19,8 @@
                     <!-- Header Row-->
                     <tr>
                         <th class="text-center">Name</th>
-                        <th class="text-center">PhoneNumber</th>
+                        <th class="text-center">Phone Number</th>
                         <th class="text-center">Email</th>
-                        <th class="text-center" colspan="2">Actions</th>
                     </tr>
 
                     <!-- Repeatable Template Row -->
@@ -29,13 +28,13 @@
                     <% for(let count=0; count < ContactList.length; count++) { %>
                         <tr>
                             <td class="text-center">
-                                <%= ContactList[count].Name %>
+                                <%= ContactList[count].fname %>
                             </td>
                             <td class="text-center">
-                                <%= ContactList[count].Pnumber%>
+                                <%= ContactList[count].pnumber%>
                             </td>
                             <td class="text-center">
-                                <%= ContactList[count].Email %>
+                                <%= ContactList[count].email %>
                             </td>
                             <td class="text-center">
                                 <a href="/contact/edit/<%= ContactList[count]._id %>" class="btn btn-primary btn-sm">

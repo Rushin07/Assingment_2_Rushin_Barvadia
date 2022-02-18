@@ -8,9 +8,11 @@ let mongoose = require('mongoose');
 // Create a model class
 let contactModel = mongoose.Schema(
     {
-        Name: String,
-        Pnumber: Number,
-        Email: String,
+        fname: String,
+        pnumber: Number,
+        email: {
+            type: String,
+        },
     },
     {
         //bacically table name
