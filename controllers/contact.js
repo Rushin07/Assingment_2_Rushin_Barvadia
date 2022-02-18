@@ -2,22 +2,21 @@
 // StudentID: 301227529
 //Assingment_2
 // Date: 2022-02-17
-
-let Inventory = require('../models/inventory');
+let Contact = require('../models/contact');
 
 exports.list = function (req, res, next) {
 
-    Inventory.find((err, inventoryList) => {
+    Contact.find((err, contactList) => {
         if (err) {
             return console.error(err);
         }
         else {
             res.render(
-                'inventory/list',
+                'contact/list',
                 {
-                    title: 'Inventory List',
-                    InventoryList: inventoryList,
-                    userName: req.user ? req.user.username : ''
+                    title: 'Contact List',
+                    ContactList: contactList,
+                    // userName: req.user ? req.user.username : ''
                 }
             );
         }
@@ -26,31 +25,25 @@ exports.list = function (req, res, next) {
 
 module.exports.displayAddPage = (req, res, next) => {
 
-    let newItem = Inventory();
+    let newItem = Contact();
 
-    res.render('inventory/add_edit', {
+    res.render('contact/add_edit', {
         title: 'Add a new Item',
         item: newItem,
-        userName: req.user ? req.user.username : ''
+        // userName: req.user ? req.user.username : ''
     })
 }
 
 module.exports.processAddPage = (req, res, next) => {
 
-    let newItem = Inventory({
+    let newItem = Contact({
         _id: req.body.id,
-        item: req.body.item,
-        qty: req.body.qty,
-        status: req.body.status,
-        size: {
-            h: req.body.size_h,
-            w: req.body.size_w,
-            uom: req.body.size_uom,
-        },
-        tags: req.body.tags.split(",").map(word => word.trim())
+        Name: req.body.name,
+        "Phone Number": req.body.phonenumber,
+        Email: req.body.email,
     });
 
-    Inventory.create(newItem, (err, item) => {
+    Contact.create(newItem, (err, item) => {
         if (err) {
             console.log(err);
             res.end(err);
@@ -58,7 +51,7 @@ module.exports.processAddPage = (req, res, next) => {
         else {
             // refresh the book list
             console.log(item);
-            res.redirect('/inventory/list');
+            res.redirect('/contact/list');
         }
     });
 }
@@ -67,17 +60,17 @@ module.exports.processAddPage = (req, res, next) => {
 module.exports.displayEditPage = (req, res, next) => {
     let id = req.params.id;
 
-    Inventory.findById(id, (err, itemToEdit) => {
+    Contact.findById(id, (err, itemToEdit) => {
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
             //show the edit view
-            res.render('inventory/add_edit', {
+            res.render('contact/add_edit', {
                 title: 'Edit Item',
                 item: itemToEdit,
-                userName: req.user ? req.user.username : ''
+                // userName: req.user ? req.user.username : ''
             })
         }
     });
@@ -87,22 +80,16 @@ module.exports.displayEditPage = (req, res, next) => {
 module.exports.processEditPage = (req, res, next) => {
     let id = req.params.id
 
-    let updatedItem = Inventory({
-        _id: req.body.id,
-        item: req.body.item,
-        qty: req.body.qty,
-        status: req.body.status,
-        size: {
-            h: req.body.size_h,
-            w: req.body.size_w,
-            uom: req.body.size_uom,
-        },
-        tags: req.body.tags.split(",").map(word => word.trim())
+    let updatedItem = Contact({
+        __id: req.body.id,
+        Name: req.body.name,
+        "Phone Number": req.body.phonenumber,
+        Email: req.body.email,
     });
 
     // console.log(updatedItem);
 
-    Inventory.updateOne({ _id: id }, updatedItem, (err) => {
+    Contact.updateOne({ _id: id }, updatedItem, (err) => {
         if (err) {
             console.log(err);
             res.end(err);
@@ -110,7 +97,7 @@ module.exports.processEditPage = (req, res, next) => {
         else {
             // console.log(req.body);
             // refresh the book list
-            res.redirect('/inventory/list');
+            res.redirect('/contact/list');
         }
     });
 }
@@ -118,14 +105,14 @@ module.exports.processEditPage = (req, res, next) => {
 module.exports.performDelete = (req, res, next) => {
     let id = req.params.id;
 
-    Inventory.remove({ _id: id }, (err) => {
+    Contact.remove({ _id: id }, (err) => {
         if (err) {
             console.log(err);
             res.end(err);
         }
         else {
             // refresh the book list
-            res.redirect('/inventory/list');
+            res.redirect('/contact/list');
         }
     });
 }

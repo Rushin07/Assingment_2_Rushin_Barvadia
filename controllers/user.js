@@ -1,17 +1,25 @@
+// Name: Rushin Barvadia
+// StudentID: 301227529
+//Assingment_2
+// Date: 2022-02-17
+
 let User = require('../models/user');
 let passport = require('passport');
 
 exports.user = function (req, res, next) {
     res.render('user', {
         title: 'Users',
-        name: 'Student'
+        name: 'Student',
+        userName: req.user ? req.user.username : ''
+
     });
 }
 
 exports.rushin = function (req, res, next) {
     res.render('user', {
         title: 'User',
-        name: 'Rushin'
+        name: 'Rushin',
+        userName: req.user ? req.user.username : ''
     });
 }
 

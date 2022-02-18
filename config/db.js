@@ -1,5 +1,5 @@
 // do not use it in production
-let DB_CONNECTION = "mongodb+srv://dbadmin:Ke4J8prl4NPryvSZ@cluster007.j3srh.mongodb.net/comp22902"
+let DB_CONNECTION = "mongodb+srv://dbadmin:Ke4J8prl4NPryvSZ@cluster007.j3srh.mongodb.net/Profile_Data"
 //Database Setup // we moved this from app.js to here so that we can see the database setup
 let mongoose = require('mongoose');
 //let dbURI = require('../config/db');

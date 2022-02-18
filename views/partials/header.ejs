@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <!-- Brand/logo -->
         <a class="navbar-brand" href="#">
-            <img src="/images/Space_Rushin.png" alt="logo"
+            <img src="/images/Eagle_Rushin.png" alt="logo"
                 style="width:80px; height:80px ; border: 10px solid black ; margin-left: 15px;">
         </a>
 
@@ -108,6 +108,19 @@
                     <% } else { %>
                         <a class="nav-link" href="/users/signin">Signin</a>
                         <% } %>
+            </li>
+            <li class="nav-item dropdown">
+                <% if (title=="Contact List" || title=="Add a new Contact" ) { %>
+                    <a class="nav-link active dropdown-toggle" href="#" role="button"
+                        data-bs-toggle="dropdown">Contacts</a>
+                    <% } else { %>
+                        <a class="nav-link dropdown-toggle" href="#" role="button"
+                            data-bs-toggle="dropdown">Contacts</a>
+                        <% } %>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="/contact/list">Contact List</a></li>
+                                <li><a class="dropdown-item" href="/contact/add">Add a new Contact</a></li>
+                            </ul>
             </li>
         </ul>
     </nav>

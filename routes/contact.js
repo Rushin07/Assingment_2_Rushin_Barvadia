@@ -5,7 +5,7 @@
 
 let express = require('express');
 let router = express.Router();
-let inventoryController = require('../controllers/inventory');
+let contactController = require('../controllers/contact');
 
 // helper function for guard purposes
 function requireAuth(req, res, next) {
@@ -17,18 +17,18 @@ function requireAuth(req, res, next) {
     next();
 }
 
-router.get('/list', requireAuth, inventoryController.list);
+router.get('/list', requireAuth, contactController.list);
 
 /* GET Route for displaying the Add page - CREATE Operation */
-router.get('/add', requireAuth, inventoryController.displayAddPage);
+router.get('/add', requireAuth, contactController.displayAddPage);
 /* POST Route for processing the Add page - CREATE Operation */
-router.post('/add', requireAuth, inventoryController.processAddPage);
+router.post('/add', requireAuth, contactController.processAddPage);
 
 // Routers for edit
-router.get('/edit/:id', requireAuth, inventoryController.displayEditPage);
-router.post('/edit/:id', requireAuth, inventoryController.processEditPage);
+router.get('/edit/:id', requireAuth, contactController.displayEditPage);
+router.post('/edit/:id', requireAuth, contactController.processEditPage);
 
 // Delete
-router.get('/delete/:id', requireAuth, inventoryController.performDelete);
+router.get('/delete/:id', requireAuth, contactController.performDelete);
 
 module.exports = router;
