@@ -3,11 +3,12 @@
 /**
  * Module dependencies.
  */
+
 var dbConfig = require('./config/db');
 var appConfig = require('./config/app');
-var debug = require('debug')('assingment-1-rushin-barvadia:server');
+var debug = require('debug')('assingment-2-rushin-barvadia:server');
 var http = require('http');
-
+var passportConfig = require('./config/passport');
 
 
 let db = dbConfig();
@@ -23,7 +24,7 @@ var server = http.createServer(appConfig);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+let passport = passportConfig();
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

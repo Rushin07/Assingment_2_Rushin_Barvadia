@@ -1,17 +1,28 @@
 // Name: Rushin Barvadia
 // StudentID: 301227529
-// Assingment_1
-// Date: 2022-02-05
+// Assingment_2
+// Date: 2022-02-17
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+let session = require('express-session');
+let flash = require('connect-flash');
+let passport = require('passport');
+
 
 var indexRouter = require('../routes/index');
 var servicesRouter = require('../routes/services');
+let usersRouter = require('../routes/users');
+let inventoryRouter = require('../routes/inventory');
 
 var app = express();
+app.use(session({
+  saveUninitialized: true,
+  resave: true,
+  secret: "sessionSecret"
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, '../views'));
@@ -24,9 +35,17 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.static(path.join(__dirname, '../node_modules')));
 app.use(express.static('public'));
-app.use('/', indexRouter);
-app.use('/services', servicesRouter);
 
+
+// Sets up passport
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/services', servicesRouter);
+app.use('/inventory', inventoryRouter);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
