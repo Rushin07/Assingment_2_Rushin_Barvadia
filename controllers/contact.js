@@ -33,7 +33,6 @@ exports.list = function (req, res, next) {
     Contact.find((err, contactList) => {
         if (err) {
             // let message = getErrorMessage(err);
-
             // req.flash('error', message);
             return console.error(err);
         }
@@ -75,7 +74,6 @@ module.exports.processAddPage = (req, res, next) => {
     Contact.create(newContacts, (err, contacts) => {
         if (err) {
             // let message = getErrorMessage(err);
-
             // req.flash('error', message);
             console.log(err);
             res.end(err);
@@ -95,7 +93,6 @@ module.exports.displayEditPage = (req, res, next) => {
     Contact.findById(id, (err, contactsToEdit) => {
         if (err) {
             // let message = getErrorMessage(err);
-
             // req.flash('error', message);
             console.log(err);
             res.end(err);
@@ -128,7 +125,6 @@ module.exports.processEditPage = (req, res, next) => {
     Contact.updateOne({ _id: id }, updatedContacts, (err) => {
         if (err) {
             // let message = getErrorMessage(err);
-
             // req.flash('error', message);
             console.log(err);
             res.end(err);
