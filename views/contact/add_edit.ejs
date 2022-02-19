@@ -7,45 +7,44 @@
                 <h1>
                     <%= title %>
                 </h1>
-                <% for(var i in messages) { %>
+                <!-- <% for(var i in messages) { %>
                     <div class="flash">
                         <%= messages[i] %>
                     </div>
-                    <% } %>
-                        <form class="form" method="post">
-                            <div class="form-group">
-                                <input type="hidden" name="id" value="<%= contacts._id %>">
-                                <label for="itemTextField">Full name</label>
-                                <input type="text" class="form-control" id="nameTextField"
-                                    placeholder="Enter the full name" name="fname" value="<%= contacts.fname %>"
-                                    required>
-                            </div>
-                            <br />
-                            <div class="form-group">
-                                <label for="emailTextField">Email</label>
-                                <input type="text" class="form-control" id="emailTextField"
-                                    placeholder="Enter your Email" name="email" value="<%= contacts.email %>" required>
-                            </div>
-                            <br />
-                            <div class="form-group">
-                                <label for="pnumberTextField">Phone Number</label>
-                                <input type="number" class="form-control" id="pnumberTextField"
-                                    placeholder="Enter your phone number" name="pnumber" value="<%= contacts.pnumber %>"
-                                    required>
-                            </div>
-                            <br />
+                    <% } %> -->
+                <form class="form" method="post">
+                    <div class="form-group">
+                        <input type="hidden" name="id" value="<%= contacts._id %>">
+                        <label for="itemTextField">Full name</label>
+                        <input type="text" class="form-control" id="nameTextField" placeholder="Enter the full name"
+                            name="fname" value="<%= contacts.fname %>" required>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="emailTextField">Email</label>
+                        <input type="text" class="form-control" id="emailTextField" placeholder="Enter your Email"
+                            name="email" value="<%= contacts.email %>" required>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <label for="pnumberTextField">Phone Number</label>
+                        <input type="number" class="form-control" id="pnumberTextField"
+                            placeholder="Enter your phone number" name="pnumber" value="<%= contacts.pnumber %>"
+                            required>
+                    </div>
+                    <br />
 
-                            <button class=" btn btn-primary" type="submit">
-                                <i class="fas fa-edit"></i>
-                                Submit
-                            </button>
+                    <button class=" btn btn-primary" type="submit">
+                        <i class="fas fa-edit"></i>
+                        Submit
+                    </button>
 
-                            <a href="/contact/list" class="btn btn-warning">
-                                <i class="fas fa-undo"></i>
-                                Cancel
-                            </a>
+                    <a href="/contact/list" class="btn btn-warning">
+                        <i class="fas fa-undo"></i>
+                        Cancel
+                    </a>
 
-                        </form>
+                </form>
             </div>
 
         </div>

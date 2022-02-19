@@ -4,27 +4,27 @@
 // Date: 2022-02-17
 let Contact = require('../models/contact');
 
-function getErrorMessage(err) {
-    console.log("===> Erro: " + err);
-    let message = '';
+// function getErrorMessage(err) {
+//     console.log("===> Erro: " + err);
+//     let message = '';
 
-    if (err.code) {
-        switch (err.code) {
-            case 11000:
-            case 11001:
-                message = 'Username already exists';
-                break;
-            default:
-                message = 'Something went wrong';
-        }
-    } else {
-        for (var errName in err.errors) {
-            if (err.errors[errName].message) message = err.errors[errName].message;
-        }
-    }
+//     if (err.code) {
+//         switch (err.code) {
+//             case 11000:
+//             case 11001:
+//                 message = 'Username already exists';
+//                 break;
+//             default:
+//                 message = 'Something went wrong';
+//         }
+//     } else {
+//         for (var errName in err.errors) {
+//             if (err.errors[errName].message) message = err.errors[errName].message;
+//         }
+//     }
 
-    return message;
-};
+//     return message;
+// };
 
 
 
@@ -32,9 +32,9 @@ exports.list = function (req, res, next) {
 
     Contact.find((err, contactList) => {
         if (err) {
-            let message = getErrorMessage(err);
+            // let message = getErrorMessage(err);
 
-            req.flash('error', message);
+            // req.flash('error', message);
             return console.error(err);
         }
         else {
@@ -43,7 +43,7 @@ exports.list = function (req, res, next) {
                 {
                     title: 'Contact List',
                     ContactList: contactList,
-                    messages: req.flash('error'),
+                    // messages: req.flash('error'),
                     userName: req.user ? req.user.username : ''
                 }
             );
@@ -57,7 +57,7 @@ module.exports.displayAddPage = (req, res, next) => {
 
     res.render('contact/add_edit', {
         title: 'Add a new Contacts',
-        messages: req.flash('error'),
+        // messages: req.flash('error'),
         contacts: newContacts,
         userName: req.user ? req.user.username : ''
     })
@@ -74,9 +74,9 @@ module.exports.processAddPage = (req, res, next) => {
 
     Contact.create(newContacts, (err, contacts) => {
         if (err) {
-            let message = getErrorMessage(err);
+            // let message = getErrorMessage(err);
 
-            req.flash('error', message);
+            // req.flash('error', message);
             console.log(err);
             res.end(err);
         }
@@ -94,9 +94,9 @@ module.exports.displayEditPage = (req, res, next) => {
 
     Contact.findById(id, (err, contactsToEdit) => {
         if (err) {
-            let message = getErrorMessage(err);
+            // let message = getErrorMessage(err);
 
-            req.flash('error', message);
+            // req.flash('error', message);
             console.log(err);
             res.end(err);
         }
@@ -104,7 +104,7 @@ module.exports.displayEditPage = (req, res, next) => {
             //show the edit view
             res.render('contact/add_edit', {
                 title: 'Edit Contacts',
-                messages: req.flash('error'),
+                // messages: req.flash('error'),
                 contacts: contactsToEdit,
                 userName: req.user ? req.user.username : ''
             })
@@ -127,9 +127,9 @@ module.exports.processEditPage = (req, res, next) => {
 
     Contact.updateOne({ _id: id }, updatedContacts, (err) => {
         if (err) {
-            let message = getErrorMessage(err);
+            // let message = getErrorMessage(err);
 
-            req.flash('error', message);
+            // req.flash('error', message);
             console.log(err);
             res.end(err);
         }
